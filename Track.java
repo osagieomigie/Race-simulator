@@ -1,11 +1,6 @@
 /*
-  Author:  James Tam
-  Version: April 1, 2013
-  
   Features:
   * Stores and tracks all information associated with a racetrack.
-
-
 */
 
 

@@ -1,9 +1,5 @@
 /*
-  Author:  James Tam
-  Version: April 1, 2013
-
   Starting execution point.
-
 */
 
 

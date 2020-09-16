@@ -1,11 +1,6 @@
 /*
-  Author:  James Tam
-  Version: April 1, 2013
-
   Features:
   * Tracks and manages information for appearance and fuel capacity.
-
-
  */
 
 public class Car
