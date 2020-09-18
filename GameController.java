@@ -26,19 +26,20 @@ public class GameController
     {
 		System.out.println("(d)rive normally");
 		System.out.println("(q)uit simulation");
+		System.out.println ("(c)hange fuel of car "); 
 		System.out.print("Enter selection: ");
     }
 
-    public void cheatMenu()
-    {
-    	System.out.println ("(0) Toggle debugging messages on/off ");
-		System.out.println ("(1) Change fuel of sports car ");
-		System.out.println ("(2) Change fuel of SUV car "); 
-		System.out.println ("(3) Change location of sports car ");
-		System.out.println ("(4) Change location of SUV car ");
-		System.out.println ("(5) Make a blizzard in the artic track ");
-		System.out.println ("(6) Make a heat wave in the desert track ");
-    }
+//    public void cheatMenu()
+//    {
+//    	System.out.println ("(0) Toggle debugging messages on/off ");
+//		System.out.println ("(1) Change fuel of sports car ");
+//		System.out.println ("(2) Change fuel of SUV car "); 
+//		System.out.println ("(3) Change location of sports car ");
+//		System.out.println ("(4) Change location of SUV car ");
+//		System.out.println ("(5) Make a blizzard in the artic track ");
+//		System.out.println ("(6) Make a heat wave in the desert track ");
+//    }
 
     public void processMenu (ArcticTrack track, char selection)
     {
@@ -54,10 +55,10 @@ public class GameController
             
     			break;
 
-    		case 'C':
-    		case 'c':
-    			cheatMenu();
-    			break;
+//    		case 'C':
+//    		case 'c':
+//    			cheatMenu();
+//    			break;
 
             case 'q':
             case 'Q':
@@ -75,7 +76,6 @@ public class GameController
         suvMenu();
         suvSelection = in.nextLine();
         a = suvSelection.charAt(0);
-        //suv.printStats();
         return a; 
     }
 

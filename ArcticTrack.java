@@ -37,10 +37,12 @@ public class ArcticTrack extends Track
 		Car [] track = getTrack();
 		Car car = track[currentLocation];
 
-		car.move();
-		setLocation(car, currentLocation+1);
-		track[currentLocation] = null;
-
-		currentLocation++;
+		// only move if there is fuel in the car
+		if (car.getFuel() >0) { 
+			car.move();
+			setLocation(car, currentLocation+1);
+			track[currentLocation] = null;
+			currentLocation++;
+		}
 	}
 }
