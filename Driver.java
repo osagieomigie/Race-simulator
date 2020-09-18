@@ -15,12 +15,12 @@ public class Driver
 
 
       suv = control.startSuv();
-      arcticTrack.display();
+      arcticTrack.display("SUV");
 
         while(suv != 'q') {
             // sports = control.startSports();
             control.runTurn(suv);
-            arcticTrack.display();
+            arcticTrack.display("SUV");
             suv = control.startSuv();
         }
     }

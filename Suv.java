@@ -31,15 +31,31 @@ public class Suv extends Car
 	{
 		return fuel_consumption;
 	}
+	
+	protected void consumeFuel(int amount)
+    {
+       if (amount < 0)
+           fuel = 0;
+       else
+           fuel = fuel - amount;
+    }
+	
+	public int move ()
+    {
+       consumeFuel(CONSUMPTION_RATE);
+       System.out.println("Current fuel: " + fuel);
+       System.out.println("Fuel use: " + CONSUMPTION_RATE);
+       return STANDARD_DISTANCE;
+    }
 
 
-	public void printStats() {
-		// System.out.println("Blizzard hits and car spins its wheels");
-		// System.out.println("Blizzard hits and but Suv moves slowly but surely in AWD mode");
-		System.out.println("Current fuel: " + getFuel());
-		System.out.println("Fuel use: " + getFuelConsumption());
-		System.out.println("Distance SUV moved: " + distanceMoved);
-	}
+//	public void printStats() {
+//		// System.out.println("Blizzard hits and car spins its wheels");
+//		// System.out.println("Blizzard hits and but Suv moves slowly but surely in AWD mode");
+//		System.out.println("Current fuel: " + getFuel());
+//		System.out.println("Fuel use: " + getFuelConsumption());
+//		System.out.println("Distance SUV moved: " + distanceMoved);
+//	}
 
 
 	/*public void setDistance(int x)

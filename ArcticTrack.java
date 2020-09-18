@@ -9,7 +9,7 @@ public class ArcticTrack extends Track
 
 	public ArcticTrack()
 	{
-		super();
+		super("SUV");
 		setLocation(new Suv(this), START);
     	currentLocation = START;
 	}
@@ -34,8 +34,8 @@ public class ArcticTrack extends Track
 
 	public void move()
 	{
-		Car [] track = getTrack();
-		Car car = track[currentLocation];
+		Suv [] track = getTrackSuv();
+		Suv car = track[currentLocation];
 
 		// only move if there is fuel in the car
 		if (car.getFuel() >0) { 

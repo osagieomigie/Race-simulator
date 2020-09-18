@@ -11,7 +11,7 @@ public class GameController
 	{
 		in = new Scanner(System.in);
         this.arcticTrack = arcticTrack;
-        this.suv = suv;
+        //this.suv = suv;
 	}
 
 	public void suvMenu ()
@@ -55,10 +55,10 @@ public class GameController
             
     			break;
 
-//    		case 'C':
-//    		case 'c':
-//    			cheatMenu();
-//    			break;
+    		case 'C':
+    		case 'c':
+    			//track.
+    			break;
 
             case 'q':
             case 'Q':
