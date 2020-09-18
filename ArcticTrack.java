@@ -38,11 +38,13 @@ public class ArcticTrack extends Track
 		Suv car = track[currentLocation];
 
 		// only move if there is fuel in the car
-		if (car.getFuel() >0) { 
+		if (car.getFuel() >0 && car.consumptionRate() <= car.getFuel() ) { 
 			car.move();
 			setLocation(car, currentLocation+1);
 			track[currentLocation] = null;
 			currentLocation++;
+		}else {
+			System.out.println("Out of fuel, please refuel!");
 		}
 	}
 }

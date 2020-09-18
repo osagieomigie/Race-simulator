@@ -36,8 +36,18 @@ public class Suv extends Car
     {
        if (amount < 0)
            fuel = 0;
-       else
-           fuel = fuel - amount;
+       else { // only move to the next distance if there is enough fuel 
+    	   int tmpFuel = fuel - amount;
+    	   if (tmpFuel > 0) {
+    		   fuel = tmpFuel; 
+    	   }
+           
+       }
+    }
+	
+	public int getFuel()
+    {
+       return fuel;
     }
 	
 	public int move ()
@@ -66,5 +76,9 @@ public class Suv extends Car
 	public int getDistance()
 	{
 		return distanceMoved;
+	}
+	
+	public int consumptionRate() {
+		return CONSUMPTION_RATE;
 	}
 }
