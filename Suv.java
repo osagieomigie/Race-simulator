@@ -23,7 +23,7 @@ public class Suv extends Car
 
 	public int awd()
 	{
-		distanceMoved = STANDARD_DISTANCE;
+		distanceMoved = STANDARD_DISTANCE + 1; 
 		return distanceMoved;
 	}
 
@@ -50,12 +50,12 @@ public class Suv extends Car
        return fuel;
     }
 	
-	public int move ()
+	public int move (String driveMode)
     {
        consumeFuel(CONSUMPTION_RATE);
        System.out.println("Current fuel: " + fuel);
        System.out.println("Fuel use: " + CONSUMPTION_RATE);
-       return STANDARD_DISTANCE;
+       return driveMode.equals("normal") ? normalDrive(): awd();
     }
 
 

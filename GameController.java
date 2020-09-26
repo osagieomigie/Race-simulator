@@ -47,12 +47,12 @@ public class GameController
     	{
     		case 'D':
     		case 'd':
-                track.move();
+                track.move("normal");
     			break;
 
     		case 'A':
     		case 'a':
-            
+    			track.move("awd");
     			break;
 
     		case 'C':

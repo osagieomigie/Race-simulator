@@ -32,17 +32,19 @@ public class ArcticTrack extends Track
 		return blizzard;
 	}
 
-	public void move()
+	public void move(String driveMode)
 	{
 		Suv [] track = getTrackSuv();
 		Suv car = track[currentLocation];
 
 		// only move if there is fuel in the car
 		if (car.getFuel() >0 && car.consumptionRate() <= car.getFuel() ) { 
-			car.move();
-			setLocation(car, currentLocation+1);
+			int tmp = car.move(driveMode);
+			//setLocation(car, currentLocation+1);
+			setLocation(car, currentLocation+tmp);
 			track[currentLocation] = null;
-			currentLocation++;
+			//currentLocation++;
+			currentLocation += tmp; // update current location 
 		}else {
 			System.out.println("Out of fuel, please refuel!");
 		}
