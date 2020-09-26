@@ -22,13 +22,13 @@ public class GameController
 		System.out.print("Enter selection: ");
     }
 
-    public void sportsCarMenu ()
-    {
-		System.out.println("(d)rive normally");
-		System.out.println("(q)uit simulation");
-		System.out.println ("(c)hange fuel of car "); 
-		System.out.print("Enter selection: ");
-    }
+//    public void sportsCarMenu ()
+//    {
+//		System.out.println("(d)rive normally");
+//		System.out.println("(q)uit simulation");
+//		System.out.println ("(c)hange fuel of car "); 
+//		System.out.print("Enter selection: ");
+//    }
 
 //    public void cheatMenu()
 //    {
@@ -48,18 +48,11 @@ public class GameController
     		case 'D':
     		case 'd':
     			processMove(track, "normal");
-                //track.move("normal");
     			break;
 
     		case 'A':
     		case 'a':
     			processMove(track, "awd");
-    			//track.move("awd");
-    			break;
-
-    		case 'C':
-    		case 'c':
-    			//track.
     			break;
 
             case 'q':
@@ -67,7 +60,7 @@ public class GameController
                 break;
 
     		default:
-    			System.out.println ("Please enter 'd', 'a', 'c'");
+    			System.out.println ("Please enter 'd', 'a', or 'c'");
     	}
     }
 
@@ -81,15 +74,15 @@ public class GameController
         return a; 
     }
 
-    public char startSports()
-    {
-        String sportSelection;
-        char a;
-        sportsCarMenu();
-        sportSelection = in.nextLine();
-        a = sportSelection.charAt(0);
-        return a;
-    }
+//    public char startSports()
+//    {
+//        String sportSelection;
+//        char a;
+//        sportsCarMenu();
+//        sportSelection = in.nextLine();
+//        a = sportSelection.charAt(0);
+//        return a;
+//    }
 
     public void runTurn(char suvSelection)
     {
