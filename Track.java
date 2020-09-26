@@ -129,8 +129,11 @@ public class Track
 	    aTrack[index] = aCar;
 	else
 	{
-	    if ((index < 0) || (index >= Track.SIZE))
-		System.out.println("Placing car out of bounds of track 0-" + Track.SIZE);	    
+	    if ((index < 0) || (index >= Track.SIZE)) {
+	    	aTrack[Track.SIZE] = aCar;
+	    	System.out.println("You have won the game!!");
+	    	//System.out.println("Placing car out of bounds of track 0-" + Track.SIZE);	
+	    }
 	}
     }
     
@@ -140,8 +143,10 @@ public class Track
 	    suvTrack[index] = aCar;
 	else
 	{
-	    if ((index < 0) || (index >= Track.SIZE))
-		System.out.println("Placing car out of bounds of track 0-" + Track.SIZE);	    
+	    if ((index < 0) || (index >= Track.SIZE)) {
+	    	suvTrack[Track.SIZE] = aCar;
+    		System.out.println("You have won the game!!");    
+	    }
 	}
     }
 

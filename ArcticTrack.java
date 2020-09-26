@@ -21,10 +21,11 @@ public class ArcticTrack extends Track
 		int generate = aGenerator.nextInt(100)+1;
 		int blizValue = 10;
 		
-		if (blizValue <= generate)
+		
+		if (blizValue >= generate)
 		{
 			blizzard = true;
-		}
+		}else blizzard = false;
 	}
 
 	public boolean getBlizzard()
