@@ -47,12 +47,14 @@ public class GameController
     	{
     		case 'D':
     		case 'd':
-                track.move("normal");
+    			processMove(track, "normal");
+                //track.move("normal");
     			break;
 
     		case 'A':
     		case 'a':
-    			track.move("awd");
+    			processMove(track, "awd");
+    			//track.move("awd");
     			break;
 
     		case 'C':
@@ -94,21 +96,15 @@ public class GameController
         processMenu(arcticTrack, suvSelection);
         //processMenu(sports);
     }
+    
+    // responsible for determining if the track is already won, and whether to move 
+    private void processMove(ArcticTrack track, String driveMode) {
+    	
+    	if (track.isWonSUV()) {
+    		System.out.println("You have won the game!!");
+    	}else {
+    		track.move(driveMode);
+    	}
+    }
 
-    /*if (track1[START] instanceof Suv)
-    {
-        int distance = ((Suv)track1[START]).awd();
-        track1[START].move(distance);
-    }*/
-
-        /*public void runMoves()
-    {
-        for (int i = 0; i < (SIZE); i++)
-        {
-            System.out.print("Turn: " + (i+1) + ":");
-            display();
-            moveOne();
-            System.out.println();
-        }
-    }*/
 }

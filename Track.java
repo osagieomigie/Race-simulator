@@ -154,4 +154,14 @@ public class Track
 	   else
 	       return false;
     }
+    
+    
+    // used for determining if an suv has won
+    public boolean isWonSUV ()
+    {
+	   if (suvTrack[SIZE-1] != null)
+	       return true;
+	   else
+	       return false;
+    }
 }
