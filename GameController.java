@@ -93,19 +93,20 @@ public class GameController
     // responsible for determining if the track is already won, and whether to move 
     private void processMove(ArcticTrack track, String driveMode) {
     	
-    	track.blizzard();
-    	boolean tmp = track.getBlizzard();
+    	//track.blizzard();
+    	//boolean tmp = track.getBlizzard();
   
     	
     	if (track.isWonSUV()) {
     		System.out.println("You have won the game!!");
     	}else {
+    		track.move(driveMode);
     		// check if there's a blizzard 
-    		if (tmp) {
-    			System.out.println("There's a blizzard! You can't move");
-    		}else {
-    			track.move(driveMode);
-    		}
+//    		if (tmp) {
+//    			System.out.println("There's a blizzard! You can't move");
+//    		}else {
+//    			track.move(driveMode);
+//    		}
     	}
     }
 
