@@ -56,11 +56,21 @@ public class test {
 		String result = outContent.toString().trim(); // remove trailing spaces 
 		assertEquals("Current fuel: 44\nFuel use: 3\n 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P\n - - - - - - - - - - - - - - - - - - - - - - - - -\n| | | | |V| | | | | | | | | | | | | | | | | | | | |\n - - - - - - - - - - - - - - - - - - - - - - - - -", result);
 	}
-//
-//	@Test
-//	void testTrack() {
-//		fail("Not yet implemented"); // TODO
-//	}
+
+	@Test
+	public void testNormalDrive_outOfFuel() {
+		outContent.reset(); // clear buffer 
+		
+		for(int i =0; i<12; i++) {
+			arcticTrack.move("normal");
+			outContent.reset(); // clear buffer 
+		}
+		control.processMenu(arcticTrack, 'd');
+
+		String result = outContent.toString().trim(); // remove trailing spaces 
+		assertEquals("You have won the game!!", result);
+	}
+	
 //
 //	@Test
 //	void testTrackString() {
