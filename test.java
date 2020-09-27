@@ -80,6 +80,16 @@ public class test {
 		assertEquals("Current fuel: 46\nFuel use: 4\n 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P\n - - - - - - - - - - - - - - - - - - - - - - - - -\n| | | |V| | | | | | | | | | | | | | | | | | | | | |\n - - - - - - - - - - - - - - - - - - - - - - - - -", result);
 	}
 	
+	@Test
+	public void testAWDDrive_two() {
+		outContent.reset(); // clear buffer 
+		control.processMenu(arcticTrack, 'a');
+		outContent.reset(); // clear buffer 
+		control.processMenu(arcticTrack, 'a');
+		arcticTrack.display("SUV");
+		String result = outContent.toString().trim(); // remove trailing spaces 
+		assertEquals("Current fuel: 42\nFuel use: 4\n 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P\n - - - - - - - - - - - - - - - - - - - - - - - - -\n| | | | | | |V| | | | | | | | | | | | | | | | | | |\n - - - - - - - - - - - - - - - - - - - - - - - - -", result);
+	}
 
 //
 //	@Test
