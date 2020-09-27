@@ -52,9 +52,20 @@ public class Suv extends Car
 	
 	public int move (String driveMode)
     {
-       consumeFuel(CONSUMPTION_RATE);
+		if (driveMode.equals("normal")) {
+			consumeFuel(CONSUMPTION_RATE);
+		}else consumeFuel(CONSUMPTION_RATE+1); // suv consumes more in awd mode 
+       
        System.out.println("Current fuel: " + fuel);
-       System.out.println("Fuel use: " + CONSUMPTION_RATE);
+       
+       // print consumption rate 
+       if (driveMode.equals("normal")) {
+    	   System.out.println("Fuel use: " + CONSUMPTION_RATE);
+		}else {
+			int tmp = CONSUMPTION_RATE+1;
+			System.out.println("Fuel use: " + tmp); // suv consumes more in awd mode 
+		}
+       
        return driveMode.equals("normal") ? normalDrive(): awd();
     }
 
@@ -78,7 +89,9 @@ public class Suv extends Car
 		return distanceMoved;
 	}
 	
-	public int consumptionRate() {
-		return CONSUMPTION_RATE;
+	public int consumptionRate(String driveMode) {
+		if (driveMode.equals("normal"))return CONSUMPTION_RATE;
+		
+		return CONSUMPTION_RATE+1;
 	}
 }
