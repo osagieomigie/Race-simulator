@@ -61,6 +61,7 @@ public class test {
 	public void testNormalDrive_win() {
 		outContent.reset(); // clear buffer 
 		
+		// move car to end of track 
 		for(int i =0; i<12; i++) {
 			arcticTrack.move("normal");
 			outContent.reset(); // clear buffer 
@@ -91,25 +92,18 @@ public class test {
 		assertEquals("Current fuel: 42\nFuel use: 4\n 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P\n - - - - - - - - - - - - - - - - - - - - - - - - -\n| | | | | | |V| | | | | | | | | | | | | | | | | | |\n - - - - - - - - - - - - - - - - - - - - - - - - -", result);
 	}
 
-//
-//	@Test
-//	void testSetLocationCarInt() {
-//		fail("Not yet implemented"); // TODO
-//	}
-//
-//	@Test
-//	void testSetLocationSuvInt() {
-//		fail("Not yet implemented"); // TODO
-//	}
-//
-//	@Test
-//	void testIsWon() {
-//		fail("Not yet implemented"); // TODO
-//	}
-//
-//	@Test
-//	void testIsWonSUV() {
-//		fail("Not yet implemented"); // TODO
-//	}
+	@Test
+	public void testAWDDrive_win() {
+		outContent.reset(); // clear buffer 
+		
+		// move car to end of track 
+		for(int i =0; i<8; i++) {
+			arcticTrack.move("awd");
+			outContent.reset(); // clear buffer 
+		}
+		control.processMenu(arcticTrack, 'a');
 
+		String result = outContent.toString().trim(); // remove trailing spaces 
+		assertEquals("You have won the game!!", result);
+	}
 }
