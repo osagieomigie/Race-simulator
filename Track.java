@@ -10,6 +10,7 @@ public class Track
 
     private Car [] aTrack;
     private Suv [] suvTrack;
+    private Truck [] truckTrack;
 
 
     // Create the track and initialize all elements to sensible default values.
@@ -29,8 +30,15 @@ public class Track
 		   suvTrack = new Suv[SIZE];
 		   for (c = 0; c < SIZE; c++)
 		       suvTrack[c] = null;
+    	}else { // initialize a track of trucks 
+    		int c;
+    		truckTrack = new Truck[SIZE];
+ 		   	for (c = 0; c < SIZE; c++)
+ 			  truckTrack[c] = null;
     	}
     }
+    
+    
 
     // Displays the track with a numbered grid around element element.
     // Columns 10 and greater are labeled with capital letters of the alphabet
@@ -67,7 +75,22 @@ public class Track
 		}
 		System.out.println();
 		
-		if (carType.equals("SUV")) {
+		if (carType.equals("Truck")) {
+			// Display each track element bound left and right by vertical bar.
+			for (c = 0; c < SIZE; c++)
+			{
+			    if (truckTrack[c] != null)
+			    {
+				   // Each element is preceeded by a vertical bar.
+				   System.out.print('|');
+				   // Display element element.
+				   System.out.print(truckTrack[c]);
+			    }
+			    else
+				   System.out.print("| ");
+			} 
+		}
+		else if (carType.equals("SUV")) {
 			// Display each track element bound left and right by vertical bar.
 			for (c = 0; c < SIZE; c++)
 			{
@@ -119,6 +142,11 @@ public class Track
     {
 		return suvTrack;
     }
+    
+    public Truck[]  getTrackTruck()
+    {
+		return truckTrack;
+    }
 
 
     // Used place a car object at a particular index in the track, useful for 
@@ -149,6 +177,20 @@ public class Track
 	    }
 	}
     }
+    
+    protected void setLocation(Truck aCar, int index)
+    {
+	if ((index >= 0) && (index < Track.SIZE))
+	    truckTrack[index] = aCar;
+	else
+	{
+	    if ((index < 0) || (index >= Track.SIZE)) {
+	    	truckTrack[Track.SIZE] = aCar;
+    		System.out.println("You have won the game!!");    
+	    }
+	}
+    }
+
 
     // The whole track is empty except for a single car so if a car reaches the 
     // final column then the simulation is 'won' for this track.
@@ -165,6 +207,15 @@ public class Track
     public boolean isWonSUV ()
     {
 	   if (suvTrack[SIZE-1] != null)
+	       return true;
+	   else
+	       return false;
+    }
+    
+ // used for determining if an Truck has won
+    public boolean isWonTruck ()
+    {
+	   if (truckTrack[SIZE-1] != null)
 	       return true;
 	   else
 	       return false;

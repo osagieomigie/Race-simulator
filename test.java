@@ -17,7 +17,7 @@ public class test {
 
 	@Before
 	public void setUpBeforeClass() {
-		 arcticTrack = new ArcticTrack();
+		 arcticTrack = new ArcticTrack("SUV");
 		 control = new GameController(arcticTrack);
 		 
 		 System.setOut(new PrintStream(outContent));
@@ -32,76 +32,76 @@ public class test {
 	@Test
 	public void testInvalidMove() {
 		outContent.reset(); // clear buffer 
-		control.processMenu(arcticTrack, 'w');
+		control.processSuvMenu(arcticTrack, 'w');
 		String result = outContent.toString().trim(); // remove trailing spaces 
-		assertEquals("Please enter 'd', 'a', or 'c'", result);
+		assertEquals("Please enter 'd', 'a', or 'q'", result);
 	}
 	
 	@Test
-	public void testNormalDrive_one() {
+	public void testNormalDriveSUV_one() {
 		outContent.reset(); // clear buffer 
-		control.processMenu(arcticTrack, 'd'); 
+		control.processSuvMenu(arcticTrack, 'd'); 
 		arcticTrack.display("SUV");
 		String result = outContent.toString().trim(); // remove trailing spaces 
 		assertEquals("Current fuel: 47\nFuel use: 3\n 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P\n - - - - - - - - - - - - - - - - - - - - - - - - -\n| | |V| | | | | | | | | | | | | | | | | | | | | | |\n - - - - - - - - - - - - - - - - - - - - - - - - -", result);
 	}
 	
 	@Test
-	public void testNormalDrive_two() {
+	public void testNormalDriveSUV_two() {
 		outContent.reset(); // clear buffer 
-		control.processMenu(arcticTrack, 'd');
+		control.processSuvMenu(arcticTrack, 'd');
 		outContent.reset(); // clear buffer 
-		control.processMenu(arcticTrack, 'd');
+		control.processSuvMenu(arcticTrack, 'd');
 		arcticTrack.display("SUV");
 		String result = outContent.toString().trim(); // remove trailing spaces 
 		assertEquals("Current fuel: 44\nFuel use: 3\n 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P\n - - - - - - - - - - - - - - - - - - - - - - - - -\n| | | | |V| | | | | | | | | | | | | | | | | | | | |\n - - - - - - - - - - - - - - - - - - - - - - - - -", result);
 	}
 
 	@Test
-	public void testNormalDrive_win() {
+	public void testNormalDriveSUV_win() {
 		outContent.reset(); // clear buffer 
 		
 		// move car to end of track 
 		for(int i =0; i<12; i++) {
-			arcticTrack.move("normal");
+			arcticTrack.moveSUV("normal");
 			outContent.reset(); // clear buffer 
 		}
-		control.processMenu(arcticTrack, 'd');
+		control.processSuvMenu(arcticTrack, 'd');
 
 		String result = outContent.toString().trim(); // remove trailing spaces 
 		assertEquals("You have won the game!!", result);
 	}
 	
 	@Test
-	public void testAWDDrive_one() {
+	public void testAWDDriveSUV_one() {
 		outContent.reset(); // clear buffer 
-		control.processMenu(arcticTrack, 'a'); 
+		control.processSuvMenu(arcticTrack, 'a'); 
 		arcticTrack.display("SUV");
 		String result = outContent.toString().trim(); // remove trailing spaces 
 		assertEquals("Current fuel: 46\nFuel use: 4\n 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P\n - - - - - - - - - - - - - - - - - - - - - - - - -\n| | | |V| | | | | | | | | | | | | | | | | | | | | |\n - - - - - - - - - - - - - - - - - - - - - - - - -", result);
 	}
 	
 	@Test
-	public void testAWDDrive_two() {
+	public void testAWDDriveSUV_two() {
 		outContent.reset(); // clear buffer 
-		control.processMenu(arcticTrack, 'a');
+		control.processSuvMenu(arcticTrack, 'a');
 		outContent.reset(); // clear buffer 
-		control.processMenu(arcticTrack, 'a');
+		control.processSuvMenu(arcticTrack, 'a');
 		arcticTrack.display("SUV");
 		String result = outContent.toString().trim(); // remove trailing spaces 
 		assertEquals("Current fuel: 42\nFuel use: 4\n 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P\n - - - - - - - - - - - - - - - - - - - - - - - - -\n| | | | | | |V| | | | | | | | | | | | | | | | | | |\n - - - - - - - - - - - - - - - - - - - - - - - - -", result);
 	}
 
 	@Test
-	public void testAWDDrive_win() {
+	public void testAWDDriveSUV_win() {
 		outContent.reset(); // clear buffer 
 		
 		// move car to end of track 
 		for(int i =0; i<8; i++) {
-			arcticTrack.move("awd");
+			arcticTrack.moveSUV("awd");
 			outContent.reset(); // clear buffer 
 		}
-		control.processMenu(arcticTrack, 'a');
+		control.processSuvMenu(arcticTrack, 'a');
 
 		String result = outContent.toString().trim(); // remove trailing spaces 
 		assertEquals("You have won the game!!", result);

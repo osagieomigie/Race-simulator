@@ -7,10 +7,22 @@ public class ArcticTrack extends Track
 
 	private int currentLocation;
 
-	public ArcticTrack()
+//	public ArcticTrack()
+//	{
+//		super("SUV");
+//		setLocation(new Suv(this), START);
+//    	currentLocation = START;
+//	}
+	
+	public ArcticTrack(String carType)
 	{
-		super("SUV");
-		setLocation(new Suv(this), START);
+		super(carType);
+		
+		if (carType.equals("Truck")) {
+			setLocation(new Truck(this), START);
+		}else {
+			setLocation(new Suv(this), START);
+		}
     	currentLocation = START;
 	}
 
@@ -33,15 +45,43 @@ public class ArcticTrack extends Track
 		return blizzard;
 	}
 
-	public void move(String driveMode)
+	public void moveSUV(String driveMode)
 	{
 		Suv [] track = getTrackSuv();
 		Suv car = track[currentLocation];
 
 		// only move if there is fuel in the car
 		if (car.getFuel() >0 && car.consumptionRate(driveMode) <= car.getFuel() ) { 
-			int tmp = car.move(driveMode);
+			car.move(driveMode);
+			
+			int tmp = 0;
+			
+			if (driveMode.equals("normal")){
+	    	   tmp =  car.normalDrive(); 
+			}else {
+	    	   tmp = car.awd();
+	       }
+			
 			//setLocation(car, currentLocation+1);
+			setLocation(car, currentLocation+tmp);
+			track[currentLocation] = null;
+			//currentLocation++;
+			currentLocation += tmp; // update current location 
+		}else {
+			System.out.println("Out of fuel, please refuel!");
+		}
+	}
+	
+	public void moveTruck()
+	{
+		Truck [] track = getTrackTruck();
+		Truck car = track[currentLocation];
+
+		// only move if there is fuel in the car
+		if (car.getFuel() >0 && car.consumptionRate() <= car.getFuel() ) { 
+			
+			int tmp = car.move();
+			
 			setLocation(car, currentLocation+tmp);
 			track[currentLocation] = null;
 			//currentLocation++;

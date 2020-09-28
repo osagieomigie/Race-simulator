@@ -16,8 +16,15 @@ public class GameController
 
 	public void suvMenu ()
     {
-		System.out.println("(a)ll wheel drive mode");
-		System.out.println("(d)rive normally");
+		System.out.println("(a)ll wheel drive mode - SUV");
+		System.out.println("(d)rive normally - SUV");
+		System.out.println("(q)uit simulation");
+		System.out.print("Enter selection: ");
+    }
+	
+	public void truckMenu ()
+    {
+		System.out.println("(d)rive normally - Truck");
 		System.out.println("(q)uit simulation");
 		System.out.print("Enter selection: ");
     }
@@ -41,7 +48,7 @@ public class GameController
 //		System.out.println ("(6) Make a heat wave in the desert track ");
 //    }
 
-    public void processMenu (ArcticTrack track, char selection)
+    public void processSuvMenu (ArcticTrack track, char selection)
     {
     	switch(selection)
     	{
@@ -54,16 +61,44 @@ public class GameController
     		case 'a':
     			processMove(track, "awd");
     			break;
+    			
+            case 'q':
+            case 'Q':
+                break;
+
+    		default:
+    			System.out.println ("Please enter 'd', 'a', or 'q'");
+    	}
+    }
+    
+    public void processTruckMenu (ArcticTrack track, char selection)
+    {
+    	switch(selection)
+    	{
+    		case 'D':
+    		case 'd':
+    			processTruckMove(track, "truck");
+    			break;
 
             case 'q':
             case 'Q':
                 break;
 
     		default:
-    			System.out.println ("Please enter 'd', 'a', or 'c'");
+    			System.out.println ("Please enter 'd', or 'q'");
     	}
     }
 
+    
+    public char startCar(String selection) {
+    	
+    	if (selection.equals("SUV")) {
+    		return startSuv();
+    	}
+    	
+    	return startTruck();
+    }
+    
     public char startSuv()
     {
         String suvSelection;
@@ -73,40 +108,47 @@ public class GameController
         a = suvSelection.charAt(0);
         return a; 
     }
-
-//    public char startSports()
-//    {
-//        String sportSelection;
-//        char a;
-//        sportsCarMenu();
-//        sportSelection = in.nextLine();
-//        a = sportSelection.charAt(0);
-//        return a;
-//    }
-
-    public void runTurn(char suvSelection)
+    
+    public char startTruck()
     {
-        processMenu(arcticTrack, suvSelection);
+        String truckSelection;
+        char a;
+        truckMenu();
+        truckSelection = in.nextLine();
+        a = truckSelection.charAt(0);
+        return a; 
+    }
+
+    public void runTurn(char selection)
+    {
+    	char tmp = Character.toLowerCase(selection);
+    	if (tmp == 'd') {
+    		processTruckMenu(arcticTrack, selection);
+    	}else {
+    		processSuvMenu(arcticTrack, selection);
+    	}
         //processMenu(sports);
     }
     
     // responsible for determining if the track is already won, and whether to move 
     private void processMove(ArcticTrack track, String driveMode) {
     	
-    	//track.blizzard();
-    	//boolean tmp = track.getBlizzard();
-  
-    	
     	if (track.isWonSUV()) {
     		System.out.println("You have won the game!!");
     	}else {
-    		track.move(driveMode);
-    		// check if there's a blizzard 
-//    		if (tmp) {
-//    			System.out.println("There's a blizzard! You can't move");
-//    		}else {
-//    			track.move(driveMode);
-//    		}
+    		if(driveMode.equals("truck")) track.moveTruck();
+    		else track.moveSUV(driveMode);
+
+    	}
+    }
+    
+    // responsible for determining if the track is already won, and whether to move 
+    private void processTruckMove(ArcticTrack track, String driveMode) {
+    	
+    	if (track.isWonTruck()) {
+    		System.out.println("You have won the game!!");
+    	}else {
+    		track.moveTruck();
     	}
     }
 

@@ -2,21 +2,32 @@
   Starting execution point.
 */
 
+import java.util.Scanner;
+
 public class Driver{
 	public static void main(String [] args){
-		char suv;
-        //char sports;
-		ArcticTrack arcticTrack  = new ArcticTrack();
+		Scanner in = new Scanner(System.in);
+		char car;
+		char s;
+		String selection;
+		
+		
+		System.out.println("Choose car:");
+		System.out.println("(SUV) for SUV");
+		System.out.println("(Truck) for Truck");
+		selection = in.nextLine();
+
+		ArcticTrack arcticTrack  = new ArcticTrack(selection);
 		GameController control = new GameController(arcticTrack);
 		
-		suv = control.startSuv();
-		arcticTrack.display("SUV");
+		car = control.startCar(selection);
+		arcticTrack.display(selection);
 
-        while(suv != 'q') {
+        while(car != 'q') {
         	// sports = control.startSports();
-            control.runTurn(suv);
-            arcticTrack.display("SUV");
-            suv = control.startSuv();
+            control.runTurn(car);
+            arcticTrack.display(selection);
+            car = control.startCar(selection);
         }
     }
 }

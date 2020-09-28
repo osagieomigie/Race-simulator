@@ -2,6 +2,7 @@ public class Sports extends Car
 {
 	public static final int STANDARD_DISTANCE = 3;
 	public static final int STARTING_FUEL = 30;
+	public static final int CONSUMPTION_RATE = 3;
 	
 	private int fuel_consumption;
 	private int fuel;
@@ -12,7 +13,7 @@ public class Sports extends Car
 		super(track);
 		setAppearance('P');
 		fuel = STARTING_FUEL;
-		fuel_consumption = super.CONSUMPTION_RATE;
+		fuel_consumption = CONSUMPTION_RATE;
 	}
 
 	public int getFuel()

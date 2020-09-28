@@ -50,7 +50,7 @@ public class Suv extends Car
        return fuel;
     }
 	
-	public int move (String driveMode)
+	public void move (String driveMode)
     {
 		if (driveMode.equals("normal")) {
 			consumeFuel(CONSUMPTION_RATE);
@@ -66,23 +66,12 @@ public class Suv extends Car
 			System.out.println("Fuel use: " + tmp); // suv consumes more in awd mode 
 		}
        
-       return driveMode.equals("normal") ? normalDrive(): awd();
+//       if (driveMode.equals("normal")){
+//    	   return normalDrive(); 
+//       }else {
+//    	   return awd();
+//       }
     }
-
-
-//	public void printStats() {
-//		// System.out.println("Blizzard hits and car spins its wheels");
-//		// System.out.println("Blizzard hits and but Suv moves slowly but surely in AWD mode");
-//		System.out.println("Current fuel: " + getFuel());
-//		System.out.println("Fuel use: " + getFuelConsumption());
-//		System.out.println("Distance SUV moved: " + distanceMoved);
-//	}
-
-
-	/*public void setDistance(int x)
-	{
-		distanceMoved = x;
-	}*/
 
 	public int getDistance()
 	{
