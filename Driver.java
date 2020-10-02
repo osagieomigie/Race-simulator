@@ -25,7 +25,7 @@ public class Driver{
 
         while(car != 'q') {
         	// sports = control.startSports();
-            control.runTurn(car);
+            control.runTurn(car, selection);
             arcticTrack.display(selection);
             car = control.startCar(selection);
         }

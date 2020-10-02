@@ -119,10 +119,9 @@ public class GameController
         return a; 
     }
 
-    public void runTurn(char selection)
+    public void runTurn(char selection, String type)
     {
-    	char tmp = Character.toLowerCase(selection);
-    	if (tmp == 'd') {
+    	if (type.equals("Truck")) {
     		processTruckMenu(arcticTrack, selection);
     	}else {
     		processSuvMenu(arcticTrack, selection);

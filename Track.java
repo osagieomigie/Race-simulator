@@ -8,9 +8,9 @@ public class Track
 {
     public static final int SIZE = 25;
 
-    private Car [] aTrack;
-    private Suv [] suvTrack;
-    private Truck [] truckTrack;
+    public Car [] aTrack;
+    public Suv [] suvTrack;
+    public Truck [] truckTrack;
 
 
     // Create the track and initialize all elements to sensible default values.
