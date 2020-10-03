@@ -1,8 +1,8 @@
 public class Sports extends Car 
 {
-	public static final int STANDARD_DISTANCE = 3;
-	public static final int STARTING_FUEL = 30;
-	public static final int CONSUMPTION_RATE = 3;
+	private static final int STANDARD_DISTANCE = 3;
+	private static final int STARTING_FUEL = 30;
+	private static final int CONSUMPTION_RATE = 3;
 	
 	private int fuel_consumption;
 	private int fuel;
@@ -19,6 +19,10 @@ public class Sports extends Car
 	public int getFuel()
 	{
 		return fuel;
+	}
+	
+	public int getStartingFuel() {
+		return STARTING_FUEL;
 	}
 
 	public int getDistanceMoved()

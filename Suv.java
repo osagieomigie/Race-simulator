@@ -1,6 +1,6 @@
 public class Suv extends Car
 {
-	public static final int CONSUMPTION_RATE = 3;
+	private static final int CONSUMPTION_RATE = 3;
 	private int STARTING_FUEL = 50;
 
 	private int fuel;
@@ -17,13 +17,13 @@ public class Suv extends Car
 
 	public int normalDrive()
 	{
-		distanceMoved = STANDARD_DISTANCE;
+		distanceMoved = super.getStandardDistance();
 		return distanceMoved;
 	}
 
 	public int awd()
 	{
-		distanceMoved = STANDARD_DISTANCE + 1; 
+		distanceMoved = super.getStandardDistance() + 1; 
 		return distanceMoved;
 	}
 
@@ -65,12 +65,6 @@ public class Suv extends Car
 			int tmp = CONSUMPTION_RATE+1;
 			System.out.println("Fuel use: " + tmp); // suv consumes more in awd mode 
 		}
-       
-//       if (driveMode.equals("normal")){
-//    	   return normalDrive(); 
-//       }else {
-//    	   return awd();
-//       }
     }
 
 	public int getDistance()

@@ -5,9 +5,9 @@
 
 public class Car
 {
-    public static final int STARTING_FUEL = 40;
-    public static final int STANDARD_DISTANCE = 2;
-    public static final int CONSUMPTION_RATE = 2;
+    private static final int STARTING_FUEL = 40;
+    private static final int STANDARD_DISTANCE = 2;
+    private static final int CONSUMPTION_RATE = 2;
 
     private char appearance;
     private int fuel;
@@ -21,6 +21,19 @@ public class Car
 
         this.track = track;
     }
+    
+    public int getStartingFuel() {
+    	return STARTING_FUEL;
+    }
+    
+    public int getStandardDistance() {
+    	return STANDARD_DISTANCE; 
+    }
+    
+    public int getConsumptionRate() {
+    	return CONSUMPTION_RATE; 
+    }
+    
 
     // As the car moves, this class or child classes can specify for that type of car
     // how much fuel to consume.

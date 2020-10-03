@@ -1,8 +1,8 @@
 public class Truck extends Car 
 {
-	public static final int STANDARD_DISTANCE = 3;
-	public static final int STARTING_FUEL = 60;
-	public static final int CONSUMPTION_RATE = 4;
+	private static final int STANDARD_DISTANCE = 3;
+	private static final int STARTING_FUEL = 60;
+	private static final int CONSUMPTION_RATE = 4;
 	
 	private int fuel_consumption;
 	private int fuel;
@@ -24,6 +24,10 @@ public class Truck extends Car
 	public int getDistanceMoved()
 	{
 		return STANDARD_DISTANCE;
+	}
+	
+	public int getStartingFuel() {
+		return STARTING_FUEL;
 	}
 	
 	public int getFuelConsumption()
