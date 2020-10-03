@@ -39,97 +39,81 @@ public class Track
     }
     
     
+    public void printTrackLabels() {
+    	int c;
+    	final int FIRST_CAPITAL = 65;     // ASCII value for 'A' = 65
+    	int temp_code;
+    	char temp_char;
+    	// Labels for the columns
+    	for (c = 0; c < SIZE; c++){
+    		if (c < 9) {
+    			System.out.print(" " + (c+1));
+    		}
+    		// Display letters for values >= 10, A = 10, B = 11 etc.
+    		// ASCII 'A' = 65, 'B' = 66
+    		else{
+    			// Determine ASCII code of label
+    			temp_code = FIRST_CAPITAL + (c - 9);
+    			
+    			// Convert ASCII code to a character and display
+    			temp_char = (char) temp_code;
+    			System.out.print(" " + temp_char);
+    		}	
+ 		}
+ 		System.out.println();
+    }
+    
+    public void printSeparator() {
+    	int c;
+    	// Row of dashes before the elements of the track
+    	for (c = 0; c < SIZE; c++){
+    		System.out.print(" -");
+    	}
+    	System.out.println();
+    }
+    
+    public void printTrack(Car [] carTrack) {
+    	int c;
+    	for (c = 0; c < SIZE; c++){
+    		if (carTrack[c] != null){
+    			// Each element is preceeded by a vertical bar.
+    			System.out.print('|');
+    			// Display element element.
+    			System.out.print(carTrack[c]);
+		    }
+		    else {
+		    	System.out.print("| ");
+		    }
+		}
+    	
+    	// Closing bar at end of row (follows last element)
+    	System.out.println('|');
+    }
 
     // Displays the track with a numbered grid around element element.
     // Columns 10 and greater are labeled with capital letters of the alphabet
     public void display(String carType)
     {
-	   int c;
-	   final int FIRST_CAPITAL = 65;     // ASCII value for 'A' = 65
-	   int temp_code;
-	   char temp_char;
-	   // Labels for the columns
-	   for (c = 0; c < SIZE; c++)
-	   {
-	       if (c < 9)
-		      System.out.print(" " + (c+1));
-	       // Display letters for values >= 10, A = 10, B = 11 etc.
-	       // ASCII 'A' = 65, 'B' = 66
-	       else
-	       {
-		      // Determine ASCII code of label
-		      temp_code = FIRST_CAPITAL + (c - 9);
-
-		      // Convert ASCII code to a character and display
-		      temp_char = (char) temp_code;
-		      System.out.print(" " + temp_char);
-	       }	
-		}
-		System.out.println();
-	
-	
-		// Row of dashes before the elements of the track
-		for (c = 0; c < SIZE; c++)
-		{
-		    System.out.print(" -");
-		}
-		System.out.println();
+    	// print the column labels
+    	printTrackLabels();
+		
+    	// print separator 
+    	printSeparator();
 		
 		if (carType.equals("Truck")) {
 			// Display each track element bound left and right by vertical bar.
-			for (c = 0; c < SIZE; c++)
-			{
-			    if (truckTrack[c] != null)
-			    {
-				   // Each element is preceeded by a vertical bar.
-				   System.out.print('|');
-				   // Display element element.
-				   System.out.print(truckTrack[c]);
-			    }
-			    else
-				   System.out.print("| ");
-			} 
+			printTrack(truckTrack);
 		}
 		else if (carType.equals("SUV")) {
 			// Display each track element bound left and right by vertical bar.
-			for (c = 0; c < SIZE; c++)
-			{
-			    if (suvTrack[c] != null)
-			    {
-				   // Each element is preceeded by a vertical bar.
-				   System.out.print('|');
-				   // Display element element.
-				   System.out.print(suvTrack[c]);
-			    }
-			    else
-				   System.out.print("| ");
-			} 
+			printTrack(suvTrack);
 		}else {
 			// Display each track element bound left and right by vertical bar.
-			for (c = 0; c < SIZE; c++)
-			{
-			    if (aTrack[c] != null)
-			    {
-				   // Each element is preceeded by a vertical bar.
-				   System.out.print('|');
-				   // Display element element.
-				   System.out.print(aTrack[c]);
-			    }
-			    else
-				   System.out.print("| ");
-			} 
+			printTrack(aTrack);
 		}
-		
-		
-		// Closing bar at end of row (follows last element)
-		System.out.println('|');
 	
-		// Row of dashes after the elements of the track
-		for (c = 0; c < SIZE; c++)
-		{
-		    System.out.print(" -");
-		}
-		System.out.println();
+		// print separator 
+    	printSeparator();
 
     }
 
