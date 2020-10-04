@@ -47,7 +47,7 @@ public class ArcticTrack extends Track
 
 	public void moveSUV(String driveMode)
 	{
-		Suv [] track = getTrackSuv();
+		Suv [] track = getSuvTrack();
 		Suv car = track[currentLocation];
 
 		// only move if there is fuel in the car
@@ -74,7 +74,7 @@ public class ArcticTrack extends Track
 	
 	public void moveTruck()
 	{
-		Truck [] track = getTrackTruck();
+		Truck [] track = getTruckTrack();
 		Truck car = track[currentLocation];
 
 		// only move if there is fuel in the car

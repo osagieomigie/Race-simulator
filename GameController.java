@@ -132,7 +132,7 @@ public class GameController
     // responsible for determining if the track is already won, and whether to move 
     private void processMove(ArcticTrack track, String driveMode) {
     	
-    	if (track.isWonSUV()) {
+    	if (track.isWon()) {
     		System.out.println("You have won the game!!");
     	}else {
     		if(driveMode.equals("truck")) track.moveTruck();
@@ -144,7 +144,7 @@ public class GameController
     // responsible for determining if the track is already won, and whether to move 
     private void processTruckMove(ArcticTrack track, String driveMode) {
     	
-    	if (track.isWonTruck()) {
+    	if (track.isWon()) {
     		System.out.println("You have won the game!!");
     	}else {
     		track.moveTruck();

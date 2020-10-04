@@ -6,35 +6,21 @@
 
 public class Track
 {
-    public static final int SIZE = 25;
-
-    public Car [] aTrack;
-    public Suv [] suvTrack;
-    public Truck [] truckTrack;
-
-
-    // Create the track and initialize all elements to sensible default values.
-    public Track()
-    {
-	   int c;
-	   aTrack = new Car[SIZE];
-	   for (c = 0; c < SIZE; c++)
-	       aTrack[c] = null;
-    }
+    private static final int SIZE = 25;
+    private Car [] aTrack;
     
- // Create the track of suvs and initialize all elements to sensible default values.
-    public Track(String type)
-    {
+    // Create the track of suvs and initialize all elements to sensible default values.
+    public Track(String type){
     	if (type.equals("SUV")) {
 		   int c;
-		   suvTrack = new Suv[SIZE];
+		   aTrack = new Suv[SIZE];
 		   for (c = 0; c < SIZE; c++)
-		       suvTrack[c] = null;
+			   aTrack[c] = null;
     	}else { // initialize a track of trucks 
     		int c;
-    		truckTrack = new Truck[SIZE];
+    		aTrack = new Truck[SIZE];
  		   	for (c = 0; c < SIZE; c++)
- 			  truckTrack[c] = null;
+ 		   	aTrack[c] = null;
     	}
     }
     
@@ -99,107 +85,43 @@ public class Track
 		
     	// print separator 
     	printSeparator();
-		
-		if (carType.equals("Truck")) {
-			// Display each track element bound left and right by vertical bar.
-			printTrack(truckTrack);
-		}
-		else if (carType.equals("SUV")) {
-			// Display each track element bound left and right by vertical bar.
-			printTrack(suvTrack);
-		}else {
-			// Display each track element bound left and right by vertical bar.
-			printTrack(aTrack);
-		}
+    	
+    	// Display each track element bound left and right by vertical bar.
+    	printTrack(aTrack);
 	
 		// print separator 
     	printSeparator();
 
     }
 
-    public Car []  getTrack ()
-    {
-		return aTrack;
+    public Truck [] getTruckTrack (){
+		return (Truck[]) aTrack;
     }
     
-    public Suv []  getTrackSuv ()
-    {
-		return suvTrack;
+    public Suv []  getSuvTrack (){
+		return (Suv[]) aTrack;
     }
-    
-    public Truck[]  getTrackTruck()
-    {
-		return truckTrack;
-    }
-
 
     // Used place a car object at a particular index in the track, useful for 
     // child classes that needs to place the two cars at the starting location.
-    protected void setLocation(Car aCar, int index)
-    {
-	if ((index >= 0) && (index < Track.SIZE))
-	    aTrack[index] = aCar;
-	else
-	{
-	    if ((index < 0) || (index >= Track.SIZE)) {
-	    	aTrack[Track.SIZE] = aCar;
-	    	System.out.println("You have won the game!!");
-	    	//System.out.println("Placing car out of bounds of track 0-" + Track.SIZE);	
-	    }
-	}
-    }
-    
-    protected void setLocation(Suv aCar, int index)
-    {
-	if ((index >= 0) && (index < Track.SIZE))
-	    suvTrack[index] = aCar;
-	else
-	{
-	    if ((index < 0) || (index >= Track.SIZE)) {
-	    	suvTrack[Track.SIZE] = aCar;
-    		System.out.println("You have won the game!!");    
-	    }
-	}
-    }
-    
-    protected void setLocation(Truck aCar, int index)
-    {
-	if ((index >= 0) && (index < Track.SIZE))
-	    truckTrack[index] = aCar;
-	else
-	{
-	    if ((index < 0) || (index >= Track.SIZE)) {
-	    	truckTrack[Track.SIZE] = aCar;
-    		System.out.println("You have won the game!!");    
-	    }
-	}
+    protected void setLocation(Car aCar, int index){
+		if ((index >= 0) && (index < Track.SIZE))
+		    aTrack[index] = aCar;
+		else
+		{
+		    if ((index < 0) || (index >= Track.SIZE)) {
+		    	aTrack[Track.SIZE] = aCar;
+		    	System.out.println("You have won the game!!");
+		    	//System.out.println("Placing car out of bounds of track 0-" + Track.SIZE);	
+		    }
+		}
     }
 
 
     // The whole track is empty except for a single car so if a car reaches the 
     // final column then the simulation is 'won' for this track.
-    public boolean isWon ()
-    {
+    public boolean isWon (){
 	   if (aTrack[SIZE-1] != null)
-	       return true;
-	   else
-	       return false;
-    }
-    
-    
-    // used for determining if an suv has won
-    public boolean isWonSUV ()
-    {
-	   if (suvTrack[SIZE-1] != null)
-	       return true;
-	   else
-	       return false;
-    }
-    
- // used for determining if an Truck has won
-    public boolean isWonTruck ()
-    {
-	   if (truckTrack[SIZE-1] != null)
 	       return true;
 	   else
 	       return false;
