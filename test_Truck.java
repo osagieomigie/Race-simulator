@@ -63,7 +63,7 @@ public class test_Truck {
 		
 		// move car to end of track 
 		for(int i =0; i<8; i++) {
-			arcticTrack.moveTruck();
+			Truck.drive(arcticTrack);
 			outContent.reset(); // clear buffer 
 		}
 		control.processTruckMenu(arcticTrack, 'd');

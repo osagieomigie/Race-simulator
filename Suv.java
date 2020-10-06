@@ -3,12 +3,14 @@ public class Suv extends Car
 	private static final int CONSUMPTION_RATE = 3;
 	private int STARTING_FUEL = 50;
 	private int distanceMoved;
+	private static int currentLocation;
 
 	public Suv(Track track)
 	{
 		super(track);
 		setAppearance('V');
 		setFuel(STARTING_FUEL);
+		currentLocation = START;
 	}
 
 	public int normalDrive()
@@ -50,5 +52,31 @@ public class Suv extends Car
 		if (driveMode.equals("normal"))return CONSUMPTION_RATE;
 		
 		return CONSUMPTION_RATE+1;
+	}
+	
+	public static void drive(ArcticTrack atrack, String driveMode){
+		Suv [] track = atrack.getSuvTrack();
+		Suv car = track[currentLocation];
+
+		// only move if there is fuel in the car
+		if (car.getFuel() >0 && car.consumptionRate(driveMode) <= car.getFuel() ) { 
+			car.move(driveMode);
+			
+			int tmp = 0;
+			
+			if (driveMode.equals("normal")){
+	    	   tmp =  car.normalDrive(); 
+			}else {
+	    	   tmp = car.awd();
+	       }
+			
+			//setLocation(car, currentLocation+1);
+			atrack.setLocation(car, currentLocation+tmp);
+			track[currentLocation] = null;
+			//currentLocation++;
+			currentLocation += tmp; // update current location 
+		}else {
+			System.out.println("Out of fuel, please refuel!");
+		}
 	}
 }

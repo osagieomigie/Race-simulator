@@ -135,8 +135,8 @@ public class GameController
     	if (track.isWon()) {
     		System.out.println("You have won the game!!");
     	}else {
-    		if(driveMode.equals("truck")) track.moveTruck();
-    		else track.moveSUV(driveMode);
+    		if(driveMode.equals("truck")) Truck.drive(track);
+    		else Suv.drive(track, driveMode);
 
     	}
     }
@@ -147,7 +147,7 @@ public class GameController
     	if (track.isWon()) {
     		System.out.println("You have won the game!!");
     	}else {
-    		track.moveTruck();
+    		Truck.drive(track);
     	}
     }
 

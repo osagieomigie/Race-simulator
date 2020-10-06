@@ -5,6 +5,7 @@
 
 public abstract class Car
 {
+	protected static final int START = 0;
     protected static final int STARTING_FUEL = 40;
     protected static final int STANDARD_DISTANCE = 2;
     protected static final int CONSUMPTION_RATE = 2;

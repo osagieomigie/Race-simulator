@@ -3,6 +3,7 @@ public class Truck extends Car
 	private static final int STANDARD_DISTANCE = 3;
 	private static final int STARTING_FUEL = 60;
 	private static final int CONSUMPTION_RATE = 4;
+	private static int currentLocation;
 	
 	private int distanceMoved;
 	
@@ -11,6 +12,7 @@ public class Truck extends Car
 		super(track);
 		setAppearance('T');
 		setFuel(STARTING_FUEL);
+		currentLocation = START;
 	}
 
 	public int getDistanceMoved()
@@ -34,5 +36,23 @@ public class Truck extends Car
 	
 	public int consumptionRate() {
 		return CONSUMPTION_RATE;
+	}
+	
+	public static void drive(ArcticTrack atrack){
+		Truck [] track = atrack.getTruckTrack();
+		Truck car = track[currentLocation];
+
+		// only move if there is fuel in the car
+		if (car.getFuel() >0 && car.consumptionRate() <= car.getFuel() ) { 
+			
+			car.move("non");
+			int distanceMoved = car.getDistanceMoved();
+			atrack.setLocation(car, currentLocation+distanceMoved);
+			track[currentLocation] = null;
+			//currentLocation++;
+			currentLocation += distanceMoved; // update current location 
+		}else {
+			System.out.println("Out of fuel, please refuel!");
+		}
 	}
 }

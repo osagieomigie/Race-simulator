@@ -63,7 +63,7 @@ public class test {
 		
 		// move car to end of track 
 		for(int i =0; i<12; i++) {
-			arcticTrack.moveSUV("normal");
+			Suv.drive(arcticTrack, "normal");
 			outContent.reset(); // clear buffer 
 		}
 		control.processSuvMenu(arcticTrack, 'd');
@@ -98,7 +98,7 @@ public class test {
 		
 		// move car to end of track 
 		for(int i =0; i<8; i++) {
-			arcticTrack.moveSUV("awd");
+			Suv.drive(arcticTrack, "awd");
 			outContent.reset(); // clear buffer 
 		}
 		control.processSuvMenu(arcticTrack, 'a');
